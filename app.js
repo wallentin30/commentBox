@@ -2,25 +2,22 @@ const userInput = document.getElementById('userInput');
 const commentInput = document.getElementById('commentInput');
 const sendBtn = document.getElementById('sendBtn');
 
-//define the comment object
 const comments = [
     {
         name: userInput,
-        msg: "",
-        id: ""
+        msg: ""
     }
 ];
 
 function commentContainer() {
-    
-   createComment();
+   
+    createComment();
+    removeComments();
+   
 }
+let index = 0;
 
 function createComment() {
-    
-    
-    
-    
     const createDiv = document.createElement('div');
     const divLeft = document.createElement('div');
     const divRight = document.createElement('div');
@@ -29,31 +26,31 @@ function createComment() {
     const deleteBtn = document.createElement('button');
     const textBtn = document.createTextNode('Delete')
     createDiv.setAttribute('class','showComments');
-    var index = 0;
-
     createDiv.setAttribute('data-value', index++)
-   
-    var new;
-    divLeft.setAttribute('class','userPhoto')
-    divLeft.innerHTML = "<img src='images/avatar.png'>";
+    const imageArray = [
+    "<img src='images/avatar.png'>",
+     "<img src='images/avatar1.png'>",
+     "<img src='images/avatar2.png'>",
+     "<img src='images/avatar3.png'>"
+    ];
 
+    var ranNum = Math.floor(Math.random() * imageArray.length)
+        
+    
+    divLeft.setAttribute('class','userPhoto')
+    divLeft.innerHTML = imageArray[ranNum];
     divRight.setAttribute('class','userComment');
     deleteBtn.setAttribute('class', 'deleteBtn');
     
-    
-    
     for(let i=0; i < comments.length; i++) {
-        
         h2.innerHTML = comments[i].name;
         para.innerHTML = comments[i].msg;
         deleteBtn.appendChild(textBtn)
-        
        
     }
 
     createDiv.appendChild(divLeft);
     createDiv.appendChild(divRight);
-    
     divRight.appendChild(h2);
     divRight.appendChild(para);
     divRight.appendChild(deleteBtn)
@@ -62,14 +59,12 @@ function createComment() {
        
     deleteBtn.addEventListener('click', function(e) {
         e.preventDefault();
-    
-         
+        const remItem = document.querySelector('#commentBox');
+        remItem.removeChild(createDiv)
         
     })
 
 }
-
-
 
 sendBtn.addEventListener('click', function(event){
    event.preventDefault();
@@ -80,8 +75,13 @@ sendBtn.addEventListener('click', function(event){
             
         }
     )
-    createComment()
-
+    
+    if(userInput.value === "" || commentInput.value === "") {
+        alert("Please fill all inputs!!!");
+        return false;
+       }else {
+        createComment();
+       }
 })
 
 
