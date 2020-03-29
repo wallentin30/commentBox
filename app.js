@@ -33,7 +33,7 @@ function createComment() {
 
     createDiv.setAttribute('data-value', index++)
    
- 
+    var new;
     divLeft.setAttribute('class','userPhoto')
     divLeft.innerHTML = "<img src='images/avatar.png'>";
 
@@ -107,64 +107,3 @@ sendBtn.addEventListener('click', function(event){
 
 
 
-
-
-/*const comments =[ 
-    {
-    
-    }];
- 
-
-const btn = document.querySelector('#commentBtn');
-const userInput = document.querySelector('#userInput');
-const commentInput = document.querySelector('#commentInput')
-
-btn.addEventListener('click', function() {
-    comments.push({
-        name: userInput.value,
-        message: commentInput.value
-    });
-    displayComments(comments,document.body)
-});
-
-
-
-function displayComments(comments, containerNode) {
-    function addParagraph(text) {
-        const newP = document.createElement("p");
-        newP.innerText = text;
-        return newP;
-    }
-
-    function addTitle(title) {
-        const h1 = document.createElement("h1");
-        h1.innerText = title;
-        return h1;
-    }
-
-
-    function createCommentNode(comment) {
-        const containerBox = document.createElement('div');
-        
-
-        const title = addTitle(comment.name);
-        const p = addParagraph(comment.message);
-        containerBox.appendChild(title);
-        containerBox.appendChild(p);
-        
-        document.body.appendChild(containerBox)
-        
-        return containerBox;
-   
-
-        // parcurgere commentari
-    for (let idx = 0; idx < comments.length; idx++) {
-        // punem in comment fiecare comment pe rand
-        const comment = comments[idx];
-        // creaza reprezentarea comentariului in DOM
-        const commentNode = createCommentNode(comment);
-        // punem in dom comentariul
-        containerNode.appendChild(commentNode);
-    }
-
-*/
