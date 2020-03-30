@@ -57,11 +57,14 @@ function createComment() {
 
     deleteBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        const remItem = document.querySelector('#commentBox');
-        remItem.removeChild(createDiv)
-
-    })
-
+        if(!deleteBtn.onclick) {
+            alert('You really want to delete this comment?')
+        }
+        if(true) {
+            const remItem = document.querySelector('#commentBox');
+            remItem.removeChild(createDiv);
+        }
+    });
 }
 
 sendBtn.addEventListener('click', function(event) {
@@ -69,7 +72,6 @@ sendBtn.addEventListener('click', function(event) {
     comments.push({
         name: userInput.value,
         msg: commentInput.value
-
     })
 
     if (userInput.value === "" || commentInput.value === "") {
