@@ -2,6 +2,7 @@ const userInput = document.getElementById('userInput');
 const commentInput = document.getElementById('commentInput');
 const sendBtn = document.getElementById('sendBtn');
 
+
 const comments = [{
     name: userInput,
     msg: ""
@@ -32,10 +33,9 @@ function createComment() {
         "<img src='images/avatar3.png'>"
     ];
 
-    var ranNum = Math.floor(Math.random() * imageArray.length)
+    var ranNum = Math.floor(Math.random() * imageArray.length);
 
-
-    divLeft.setAttribute('class', 'userPhoto')
+    divLeft.setAttribute('class', 'userPhoto');
     divLeft.innerHTML = imageArray[ranNum];
     divRight.setAttribute('class', 'userComment');
     deleteBtn.setAttribute('class', 'deleteBtn');
@@ -43,27 +43,28 @@ function createComment() {
     for (let i = 0; i < comments.length; i++) {
         h2.innerHTML = comments[i].name;
         para.innerHTML = comments[i].msg;
-        deleteBtn.appendChild(textBtn)
+        deleteBtn.appendChild(textBtn);
 
     }
-
     createDiv.appendChild(divLeft);
     createDiv.appendChild(divRight);
     divRight.appendChild(h2);
     divRight.appendChild(para);
-    divRight.appendChild(deleteBtn)
+    divRight.appendChild(deleteBtn);
 
     document.getElementById('commentBox').appendChild(createDiv);
 
     deleteBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        if(!deleteBtn.onclick) {
-            alert('You really want to delete this comment?')
-        }
-        if(true) {
             const remItem = document.querySelector('#commentBox');
-            remItem.removeChild(createDiv);
-        }
+            const userConfirmation = confirm('Do You really want to delete this comment?');
+            if(userConfirmation === true) {
+                 remItem.removeChild(createDiv);
+            }else {
+                return;
+            }
+        
+        
     });
 }
 
@@ -72,7 +73,7 @@ sendBtn.addEventListener('click', function(event) {
     comments.push({
         name: userInput.value,
         msg: commentInput.value
-    })
+    });
 
     if (userInput.value === "" || commentInput.value === "") {
         alert("Please fill all inputs!!!");
