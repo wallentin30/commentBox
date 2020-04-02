@@ -8,12 +8,6 @@ const comments = [{
     msg: ""
 }];
 
-function commentContainer() {
-
-    createComment();
-    removeComments();
-
-}
 let index = 0;
 
 function createComment() {
@@ -33,8 +27,7 @@ function createComment() {
         "<img src='images/avatar3.png'>"
     ];
 
-    var ranNum = Math.floor(Math.random() * imageArray.length);
-
+    const ranNum = Math.floor(Math.random() * imageArray.length);
     divLeft.setAttribute('class', 'userPhoto');
     divLeft.innerHTML = imageArray[ranNum];
     divRight.setAttribute('class', 'userComment');
@@ -56,15 +49,13 @@ function createComment() {
 
     deleteBtn.addEventListener('click', function(e) {
         e.preventDefault();
-            const remItem = document.querySelector('#commentBox');
-            const userConfirmation = confirm('Do You really want to delete this comment?');
-            if(userConfirmation === true) {
-                 remItem.removeChild(createDiv);
-            }else {
-                return;
-            }
-        
-        
+        const remItem = document.querySelector('#commentBox');
+        const userConfirmation = confirm('Do You really want to delete this comment?');
+        if (userConfirmation === true) {
+            remItem.removeChild(createDiv);
+        } else {
+            return;
+        }
     });
 }
 
